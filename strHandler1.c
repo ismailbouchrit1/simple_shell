@@ -5,7 +5,6 @@
  * @c: char to print
  * Return: 1 (Success), -1 (Fail)
  */
-/**
 int _putchar(char c)
 {
 	static int i;
@@ -20,13 +19,12 @@ int _putchar(char c)
 		buffer[i++] = c;
 	return (1);
 }
-*/
 /**
  * _puts - print string
  * @str: string printed
  * Return: void
  */
-/**
+
 void _puts(char *str)
 {
 	int i = 0;
@@ -40,7 +38,7 @@ void _puts(char *str)
 		i++;
 	}
 }
-*/
+
 /**
  * _strdup - duplicate a string
  * @str: string to duplicate
