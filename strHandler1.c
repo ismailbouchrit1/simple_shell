@@ -7,18 +7,9 @@
  */
 int _putchar(char c)
 {
-	static int i;
-	static char buffer[WRITE_BUF_SIZE];
-
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
-	{
-		write(1, buffer, i);
-		i = 0;
-	}
-	if (c != BUF_FLUSH)
-		buffer[i++] = c;
-	return (1);
+	return (write(1, &c, 1));
 }
+
 /**
  * _puts - print string
  * @str: string printed
