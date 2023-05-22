@@ -10,10 +10,6 @@
 #include <sys/types.h>
 #include <signal.h>
 
-/* MACROS FOR READ AND WRITE BUFFERS */
-#define READ_BUF_SIZE 1024
-#define WRITE_BUF_SIZE 1024
-#define BUF_FLUSH -1
 
 /* String handler */
 
