@@ -10,6 +10,11 @@
 #include <sys/types.h>
 #include <signal.h>
 
+/* MACROS FOR READ AND WRITE BUFFERS */
+#define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+#define BUF_FLUSH -1
+
 /* String handler */
 
 int _putchar(char c);
@@ -21,5 +26,7 @@ int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strncpy(char *dest, char *src, int n);
 
+/* Tokenize_string */
+void tokenize(char *str, char *delim, char *token[]);
 
 #endif
