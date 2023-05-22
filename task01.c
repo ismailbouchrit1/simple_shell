@@ -7,16 +7,18 @@
  */
 int main(void)
 {
-	char *buffer = NULL, *cmd, **args
+	char *buffer = NULL, *cmd, **args;
 	size_t line_size = 0;
 	pid_t pid;
-	int status, i = 0;
+	int status;
+	int i = 0;
 
 	while (1)
 	{
 		write(1, "$ ", 2);
 		getline(&buffer, &line_size, stdin);
-		if ((pid = fork() == -1)
+		pid = fork();
+		if (pid == -1)
 		{
 			perror("Error:fork failed");
 			exit(EXIT_FAILURE);
@@ -25,6 +27,8 @@ int main(void)
 		{
 			cmd = strtok(buffer, " \n");
 			args = malloc(sizeof (char*) * 1024);
+			if (cmd == NULL)
+			exit(EXIT_SUCCESS);
 			for (; cmd != NULL; i++)
 			{
 				args[i] = cmd;
