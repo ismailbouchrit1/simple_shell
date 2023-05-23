@@ -23,8 +23,11 @@ int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strncpy(char *dest, char *src, int n);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
+/*  memHandler.c  */
+
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void memcopy(void *newptr, const void *ptr, unsigned int size);
 
 /* Tokenize_string */
 void tokenize(char *str, char *delim, char *token[]);
