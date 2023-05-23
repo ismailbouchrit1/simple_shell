@@ -10,6 +10,8 @@
 #include <sys/types.h>
 #include <signal.h>
 
+#define BUFSIZE 1024
+
 
 /* String handler */
 
@@ -24,5 +26,11 @@ char *_strncpy(char *dest, char *src, int n);
 
 /* Tokenize_string */
 void tokenize(char *str, char *delim, char *token[]);
+
+
+/* _getline  */
+void _bringline(char **line, size_t *n, char *buffer, size_t i);
+ssize_t _getline(char **line, size_t *n, FILE *stream);
+
 
 #endif
