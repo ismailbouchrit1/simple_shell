@@ -10,4 +10,4 @@
  */
 void search_for_cmd(char *cmd, char *paths[], char *fpath)
 {
-	int i = 0, j = 0, 
+	int i = 0, j = 0,

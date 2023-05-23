@@ -26,7 +26,7 @@ int main(void)
 		else if (pid == 0)
 		{
 			cmd = strtok(buffer, " \n");
-			args = malloc(sizeof (char*) * 1024);
+			args = malloc(sizeof (char *) * 1024);
 			if (cmd == NULL)
 			exit(EXIT_SUCCESS);
 			for (; cmd != NULL; i++)

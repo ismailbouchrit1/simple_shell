@@ -71,7 +71,7 @@ ssize_t _getline(char **line, size_t *n, FILE *stream)
 			break;
 		}
 		if (input >= BUFSIZE)
-			buffer = realloc(buffer, input, input + 1);
+			buffer = _realloc(buffer, input, input + 1);
 		buffer[input] = t;
 		input++;
 	}
