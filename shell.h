@@ -45,4 +45,10 @@ void display_prompt(void);
 
 /*converter*/
 int _atoi(char *str);
+
+/*getline funtion*/
+void _bringline(char **line, size_t *n, char *buffer, size_t i);
+ssize_t _getline(char **line, size_t *n, FILE *stream);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void memcopy(void *newptr, const void *ptr, unsigned int size);
 #endif

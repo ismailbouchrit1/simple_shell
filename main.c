@@ -10,12 +10,14 @@ int main(void)
 	char *line = NULL;
 	size_t size_line = 0;
 	char **args;
+	ssize_t n_chars = 0;
 
 	while (1)
 	{
 		display_prompt();
+		n_chars = _getline(&line, &size_line, stdin);
 
-		if (getline(&line, &size_line, stdin) == -1)
+		if (n_chars == -1)
 		{
 			perror("Error in getline:");
 			break;
