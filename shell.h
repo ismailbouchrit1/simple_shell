@@ -1,30 +1,67 @@
-#define TRUE 1
-#define FALSE !TRUE
+#ifndef SHELL_H
+#define SHELL_H
 
-// Shell pid, pgid, terminal modes
-static pid_t GBSH_PID;
-static pid_t GBSH_PGID;
-static int GBSH_IS_INTERACTIVE;
-static struct termios GBSH_TMODES;
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <stddef.h>
+#include <sys/stat.h>
+#include <signal.h>
 
-static char* currentDirectory;
-extern char** environ;
+int _putchar(char c);
+void _puts(char *str);
+int _strlen(char *s);
+char *_strdup(char *str);
+char *concat_all(char *name, char *sep, char *value);
 
-struct sigaction act_child;
-struct sigaction act_int;
+char **splitstring(char *str, const char *delim);
+void execute(char **argv);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
-int no_reprint_prmpt;
 
-pid_t pid;
-
+extern char **environ;
 
 /**
- * SIGNAL HANDLERS
+ * struct list_path - Linked list containing PATH directories
+ * @dir: directory in path
+ * @p: pointer to next node
  */
-// signal handler for SIGCHLD */
-void signalHandler_child(int p);
-// signal handler for SIGINT
-void signalHandler_int(int p);
+typedef struct list_path
+{
+	char *dir;
+	struct list_path *p;
+} list_path;
 
 
-int changeDirectory(char * args[]);
+char *_getenv(const char *name);
+list_path *add_node_end(list_path **head, char *str);
+list_path *linkpath(char *path);
+char *_which(char *filename, list_path *head);
+
+/**
+ * struct mybuild - pointer to function with corresponding buildin command
+ * @name: buildin command
+ * @func: execute the buildin command
+ */
+typedef struct mybuild
+{
+	char *name;
+	void (*func)(char **);
+} mybuild;
+
+void(*checkbuild(char **arv))(char **arv);
+int _atoi(char *s);
+void exitt(char **arv);
+void env(char **arv);
+void _setenv(char **arv);
+void _unsetenv(char **arv);
+
+void freearv(char **arv);
+void free_list(list_path *head);
+
+
+#endif
