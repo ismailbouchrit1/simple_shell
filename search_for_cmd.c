@@ -8,7 +8,6 @@
  */
 void *search_for_cmd(char *cmd)
 {
-	int i = 0, j = 0,
 	char *path, *token, *path_cmd, *cmd_path, *path_cpy;
 	int path_cmd_len = 0;
 

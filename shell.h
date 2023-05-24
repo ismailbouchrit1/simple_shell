@@ -60,7 +60,6 @@ void _bringline(char **line, size_t *n, char *buffer, size_t i);
 ssize_t _getline(char **line, size_t *n, FILE *stream);
 
 
-=======
 /*converter*/
 int _atoi(char *str);
 
