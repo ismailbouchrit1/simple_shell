@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * atoi - ....
+ * _atoi - ....
  * @str: ..
  * Return: Always 0.
  */
