@@ -1,0 +1,31 @@
+#include "shell.h"
+
+/**
+ * write_string - ..
+ * @fd: ..
+ * @str: ...
+ * Return: Nothing.
+ */
+void write_the_string(int fd, const char *str)
+{
+	size_t len = 0;
+	ssize_t w_bytes;
+
+	len = _strlen(str);
+	w_bytes = write(fd, str, len);
+
+	if (w_bytes < 0)
+	{
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
+ * display_prompt - ...
+ *
+ * Return: Nothing.
+ */
+void display_prompt(void)
+{
+	write_the_string(1, "$ ");
+}

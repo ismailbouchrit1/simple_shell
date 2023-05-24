@@ -8,6 +8,32 @@
  *
  * Retutn: Nothing
  */
-void search_for_cmd(char *cmd, char *paths[], char *fpath)
+void *search_for_cmd(char *cmd)
 {
-	int i = 0, j = 0, 
+	char *path, *token, *path_cmd, *cmd_path;
+	int path_cmd_len = 0;
+
+	path = getenv("PATH");
+	token = strtok(path, ":");
+	if (_strchr(cmd, '/') != NULL)
+	{
+		cmd_path = malloc((_strlen(cmd) + 1) * sizeof(char));
+		_strcpy(cmd_path, cmd);
+		return (cmd_path);
+	}
+	while (token != NULL)
+	{
+		path_cmd_len = _strlen(token) + _strlen(cmd) + 2;
+		path_cmd = malloc(path_cmd_len * sizeof(char));
+		_strcpy(path_cmd, token);
+		_strcat(path_cmd, "/");
+		_strcat(path_cmd, cmd);
+
+		if (access(path_cmd, X_OK) == 0)
+			return (path_cmd);
+
+		free(path_cmd);
+		token = strtok(NULL, ":");
+	}
+	return (NULL);
+}
