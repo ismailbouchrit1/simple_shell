@@ -1,67 +1,61 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <sys/wait.h>
+#include <unistd.h>
 #include <sys/types.h>
-#include <errno.h>
-#include <stddef.h>
+#include <sys/wait.h>
 #include <sys/stat.h>
-#include <signal.h>
+#include <time.h>
+#include <stdbool.h>
 
-int _putchar(char c);
-void _puts(char *str);
-int _strlen(char *s);
-char *_strdup(char *str);
-char *concat_all(char *name, char *sep, char *value);
-
-char **splitstring(char *str, const char *delim);
-void execute(char **argv);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-
-
+/* environment variables */
 extern char **environ;
+extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 
-/**
- * struct list_path - Linked list containing PATH directories
- * @dir: directory in path
- * @p: pointer to next node
- */
-typedef struct list_path
+/* handle built ins */
+int checker(char **cmd, char *buf);
+void prompt_user(void);
+void handle_signal(int m);
+char **tokenizer(char *line);
+char *test_path(char **path, char *command);
+char *append_path(char *path, char *command);
+int handle_builtin(char **command, char *line);
+void exit_cmd(char **command, char *line);
+
+void print_env(void);
+
+/* string handlers */
+int _strcmp(char *s1, char *s2);
+int _strlen(char *s);
+int _strncmp(char *s1, char *s2, int n);
+char *_strdup(char *s);
+char *_strchr(char *s, char c);
+
+void execution(char *cp, char **cmd);
+char *find_path(void);
+
+/* helper function for efficient free */
+void free_buffers(char **buf);
+
+struct builtin
 {
-	char *dir;
-	struct list_path *p;
-} list_path;
+	char *env;
+	char *exit;
+} builtin;
 
-
-char *_getenv(const char *name);
-list_path *add_node_end(list_path **head, char *str);
-list_path *linkpath(char *path);
-char *_which(char *filename, list_path *head);
-
-/**
- * struct mybuild - pointer to function with corresponding buildin command
- * @name: buildin command
- * @func: execute the buildin command
- */
-typedef struct mybuild
+struct info
 {
-	char *name;
-	void (*func)(char **);
-} mybuild;
+	int final_exit;
+	int ln_count;
+} info;
 
-void(*checkbuild(char **arv))(char **arv);
-int _atoi(char *s);
-void exitt(char **arv);
-void env(char **arv);
-void _setenv(char **arv);
-void _unsetenv(char **arv);
+struct flags
+{
+	bool interactive;
+} flags;
 
-void freearv(char **arv);
-void free_list(list_path *head);
-
-
-#endif
+#endif /* SHELL_H */
