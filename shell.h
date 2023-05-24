@@ -37,6 +37,7 @@ char *_strchr(char *s, char c);
 
 void execution(char *cp, char **cmd);
 char *find_path(void);
+char *test_path(char **path, char *command);
 
 /* helper function for efficient free */
 void free_buffers(char **buf);
