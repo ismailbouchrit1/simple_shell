@@ -14,7 +14,6 @@ void _bringline(char **line, size_t *n, char *buffer, size_t i)
 	{
 		if  (i > BUFFER_SIZE)
 			*n = i;
-
 		else
 			*n = BUFFER_SIZE;
 		*line = buffer;
@@ -53,7 +52,6 @@ ssize_t _getline(char **line, size_t *n, FILE *stream)
 	else
 		return (-1);
 	input = 0;
-
 	buffer = malloc(sizeof(char) * BUFFER_SIZE);
 	if (buffer == 0)
 		return (-1);

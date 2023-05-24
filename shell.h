@@ -10,6 +10,8 @@
 #include <sys/types.h>
 #include <signal.h>
 
+
+
 #define TOKEN_DELIM " \n\t"
 #define BUFFER_SIZE 1024
 
@@ -43,6 +45,21 @@ void handle_env(void);
 void write_the_string(int fd, const char *str);
 void display_prompt(void);
 
+
+/*  memHandler.c  */
+
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void memcopy(void *newptr, const void *ptr, unsigned int size);
+
+/* Tokenize_string */
+void tokenize(char *str, char *delim, char *token[]);
+
+
+/* _getline  */
+void _bringline(char **line, size_t *n, char *buffer, size_t i);
+ssize_t _getline(char **line, size_t *n, FILE *stream);
+
+
 /*converter*/
 int _atoi(char *str);
 
@@ -51,4 +68,5 @@ void _bringline(char **line, size_t *n, char *buffer, size_t i);
 ssize_t _getline(char **line, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void memcopy(void *newptr, const void *ptr, unsigned int size);
+
 #endif
