@@ -23,17 +23,14 @@ int main(void)
 		args = parse_cmd(line);
 		if (args[0] != NULL)
 		{
-			if (args[0] != NULL)
-			{
-				if (_strcmp(args[0], "exit") == 0)
-					to_exit(args);
-				else if (_strcmp(args[0], "env") == 0)
-					handle_env();
-				else
-					execute_cmd(args);
-			}
+			if (_strcmp(args[0], "exit") == 0)
+				to_exit(args);
+			else if (_strcmp(args[0], "env") == 0)
+				handle_env();
+			else
+				execute_cmd(args);
 		}
-		_free(args);
+		free(args);
 	}
 	return (0);
 }

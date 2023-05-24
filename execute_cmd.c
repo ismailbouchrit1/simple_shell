@@ -18,7 +18,7 @@ void execute_cmd(char **args)
 		pid = fork();
 		if (pid == -1)
 		{
-			perror("Eroor fork failed:");
+			perror("Error fork failed:");
 			exit(EXIT_FAILURE);
 		}
 		else if (pid == 0)
@@ -30,7 +30,9 @@ void execute_cmd(char **args)
 			}
 		}
 		else
-			waitpid(pid, &status, 0);
+		{
+			wait(&status);
+		}
 	}
 	else
 		perror("command not found :(");
@@ -67,7 +69,7 @@ void to_exit(char **args)
 
 	if (args[1] != NULL)
 	{
-		exit_ = atoi(args[1]);
+		exit_ = _atoi(args[1]);
 		exit(exit_);
 	}
 	else

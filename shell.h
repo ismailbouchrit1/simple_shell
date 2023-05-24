@@ -43,4 +43,6 @@ void handle_env(void);
 void write_the_string(int fd, const char *str);
 void display_prompt(void);
 
+/*converter*/
+int _atoi(char *str);
 #endif

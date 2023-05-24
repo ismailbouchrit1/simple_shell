@@ -11,12 +11,12 @@ void write_the_string(int fd, const char *str)
 	size_t len = 0;
 	ssize_t w_bytes;
 
-	len = _strlen(str);
-	w_bytes = write(fd, str, len);
-
-	if (w_bytes < 0)
+	if (isatty(STDIN_FILENO) == 1)
 	{
-		exit(EXIT_FAILURE);
+		len = _strlen(str);
+		w_bytes = write(fd, str, len);
+		if (w_bytes == -1)
+			exit(EXIT_FAILURE);
 	}
 }
 
