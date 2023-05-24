@@ -3,10 +3,8 @@
 /**
  * search_for_cmd - function that search for the command
  * @cmd: command to look for
- * @paths: The path...
- * @fpath: The full path
  *
- * Retutn: Nothing
+ * Return: Nothing
  */
 void *search_for_cmd(char *cmd)
 {

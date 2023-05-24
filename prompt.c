@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * write_string - ..
+ * write_the_string - ..
  * @fd: ..
  * @str: ...
  * Return: Nothing.
