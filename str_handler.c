@@ -68,9 +68,9 @@ char *_strdup(char *s)
 	char *ptr;
 	int i, len;
 
+	
 	if (s == NULL)
 		return (NULL);
-
 	len = _strlen(s);
 
 	ptr = malloc(sizeof(char) * (len + 1));
