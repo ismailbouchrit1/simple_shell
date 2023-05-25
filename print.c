@@ -64,4 +64,5 @@ void print_env(void)
 		write(STDOUT_FILENO, "\n", 1);
 		x++;
 	}
+
 }
