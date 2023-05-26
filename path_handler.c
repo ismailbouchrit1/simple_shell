@@ -7,8 +7,11 @@
 char *find_path(void)
 {
 	int x;
-	char **env = environ, *path = NULL;
+	char **env = environ, *path = NULL, *path_var;
 
+	path_var = getenv("PATH");
+	if (path_var == NULL)
+		return (NULL);
 	while (*env)
 	{
 		if (_strncmp(*env, "PATH=", 5) == 0)
@@ -40,10 +43,10 @@ char *append_path(char *path, char *command)
 	char *buf;
 	size_t i = 0, j = 0;
 
-	if (command == 0)
+	if (command == NULL)
 		command = "";
 
-	if (path == 0)
+	if (path == NULL)
 		path = "";
 
 	buf = malloc(sizeof(char) * (_strlen(path) + _strlen(command) + 2));

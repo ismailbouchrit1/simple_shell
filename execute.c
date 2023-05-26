@@ -14,14 +14,17 @@ void execution(char *cp, char **cmd)
 
 	child_pid = fork();
 	if (child_pid < 0)
+	{
 		perror(cp);
+		exit(EXIT_FAILURE);
+	}
 	if (child_pid == 0)
 	{
 		execve(cp, cmd, env);
 		perror(cp);
 		free(cp);
 		free_buffers(cmd);
-		exit(98);
+		exit(EXIT_FAILURE);
 	}
 	else
 		wait(&status);
