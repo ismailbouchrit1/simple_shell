@@ -23,7 +23,6 @@ int main(int ac, char **av, char *envp[])
 		free_buffers(command);
 		free_buffers(paths);
 		free(pathcommand);
-	
 		prompt_user();
 		linesize = getline(&line, &bufsize, stdin);
 		if (linesize < 0)
