@@ -1,3 +1,4 @@
+#include "shell.h"
 
 /**
  * aux_help_general - Entry point for help information for the help builtin

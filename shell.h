@@ -194,6 +194,7 @@ int exit_shell(data_shell *datash);
 int get_len(int n);
 char *aux_itoa(int n);
 int _atoi(char *s);
+int _strlen(const char *s);
 
 /* aux_error1.c */
 char *strcat_cd(data_shell *, char *, char *, char *);
